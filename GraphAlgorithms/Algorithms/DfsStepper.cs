@@ -27,7 +27,6 @@ namespace GraphAlgorithms.Algorithms
       for (int i = 0; i < graph.Length; i++)
         Parent[i] = -1;
 
-      // ⭐ IDENTYCZNA INICJALIZACJA JAK W BFS
       stack.Push(start);
       visited[start] = true;
       Level[start] = 0;
@@ -42,7 +41,6 @@ namespace GraphAlgorithms.Algorithms
       CurrentVertex = v;
       Output.Append(v).Append(" ");
 
-      // ⚠️ Odwrócona kolejność, żeby DFS był naturalny
       for (int i = graph[v].Count - 1; i >= 0; i--)
       {
         int u = graph[v][i];

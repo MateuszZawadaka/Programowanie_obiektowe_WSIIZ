@@ -20,12 +20,10 @@ namespace GraphAlgorithms.Algorithms
       }
 
 
-      //Dodawanie krawędzi v1 -> v2
       public void AddEdge(int v1, int v2)
       {
         A[v1, v2] = 1;
       }
-    // Publiczna metoda uruchamiająca algorytm
       public void RunDfs(int startVertex)
       {
         for(int i = 0; i < n; i++)
@@ -36,7 +34,6 @@ namespace GraphAlgorithms.Algorithms
         }
       }
 
-    //Prywatna rekurencyjna procedura DFS
       private void Dfs(int v)
       {
       visited[v] = true;

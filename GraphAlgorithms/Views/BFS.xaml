@@ -7,8 +7,6 @@
 
 	<ScrollView>
 		<VerticalStackLayout Padding="20" Spacing="14">
-
-			<!-- OPIS TEORETYCZNY -->
 			<Label
                 Text="Algorytm przechodzenia wszerz (ang. breadth-first search, BFS) opisaliśmy już przy przechodzeniu drzew binarnych. Dla grafu działa on następująco:"
                 FontAttributes="Bold" />
@@ -22,7 +20,6 @@
 			<Label
                 Text="Parametry te są zebrane w tablicy logicznej vs, która posiada tyle elementów, ile jest wierzchołków w grafie. Element vs[i] odnosi się do wierzchołka grafu o numerze i." />
 
-			<!-- PRZYCISKI -->
 			<HorizontalStackLayout Spacing="10">
 				<Button
                     Text="▶ Następny krok BFS"
@@ -36,13 +33,10 @@
                     HorizontalOptions="FillAndExpand"/>
 			</HorizontalStackLayout>
 
-			<!-- WIZUALIZACJA -->
 			<GraphicsView
                 x:Name="TreeView"
                 HeightRequest="300"
                 BackgroundColor="White"/>
-
-			<!-- WYNIK -->
 			<Label Text="Wynik BFS:" FontAttributes="Bold"/>
 			<Label x:Name="OutputLabel"/>
 

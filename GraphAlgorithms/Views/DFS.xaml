@@ -6,8 +6,6 @@
 
 	<ScrollView>
 		<VerticalStackLayout Padding="16" Spacing="12">
-
-			<!-- OPIS TEORETYCZNY -->
 			<Label
                 Text="Algorytm przechodzenia w głąb (ang. depth-first search, DFS) polega na eksplorowaniu grafu poprzez możliwie najgłębsze zagłębianie się w strukturę grafu, zaczynając od wierzchołka startowego."
                 FontAttributes="Bold" />
@@ -21,20 +19,18 @@
 			<Label
                 Text="Parametry te są przechowywane w tablicy logicznej vs, której rozmiar odpowiada liczbie wierzchołków w grafie. Element vs[i] odnosi się do wierzchołka grafu o numerze i." />
 
-			<!-- TYTUŁ -->
+
 			<Label
                 Text="Depth First Search (DFS)"
                 FontSize="22"
                 FontAttributes="Bold"
                 HorizontalOptions="Center" />
 
-			<!-- WIDOK RYSOWANIA -->
 			<GraphicsView
                 x:Name="TreeView"
                 HeightRequest="300"
                 BackgroundColor="White" />
 
-			<!-- WYNIK -->
 			<Label
                 Text="Odwiedzone wierzchołki:"
                 FontAttributes="Bold" />
@@ -44,7 +40,6 @@
                 FontSize="16"
                 TextColor="White" />
 
-			<!-- PRZYCISKI -->
 			<HorizontalStackLayout Spacing="12"
                                    HorizontalOptions="Center">
 

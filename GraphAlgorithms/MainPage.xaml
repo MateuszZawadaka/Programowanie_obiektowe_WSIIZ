@@ -7,21 +7,17 @@
 		<VerticalStackLayout
             Padding="30,0"
             Spacing="25">
-
-			<!-- Logo -->
 			<Image
                 Source="wsiz_logo.png"
                 HeightRequest="185"
                 Aspect="AspectFit"
                 SemanticProperties.Description="Logo uczelni" />
 
-			<!-- Tytuł projektu -->
+
 			<Label
                 Text="Algorytmy grafowe"
                 Style="{StaticResource Headline}"
                 SemanticProperties.HeadingLevel="Level1" />
-
-			<!-- Opis projektu -->
 			<Label
                 Text="Aplikacja edukacyjna prezentująca działanie algorytmów grafowych z wykorzystaniem graficznego interfejsu użytkownika w technologii .NET MAUI.&#10;&#10;
 				      Projekt umożliwia wizualizację krok po kroku algorytmów takich jak BFS (przeszukiwanie wszerz), DFS (przeszukiwanie w głąb) oraz algorytmu komiwojażera, co pozwala na łatwiejsze zrozumienie zasad ich działania."

@@ -43,7 +43,6 @@ namespace GraphAlgorithms.Algorithms
     {
       if (path.Count == n)
       {
-        // powrót do wierzchołka startowego
         int totalCost = cost + graph[current, start];
         if (totalCost < BestCost)
         {
@@ -69,7 +68,6 @@ namespace GraphAlgorithms.Algorithms
               cost + graph[current, next]
           );
 
-          // cofanie (backtracking)
           visited[next] = false;
           path.RemoveAt(path.Count - 1);
         }

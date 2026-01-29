@@ -54,7 +54,6 @@ namespace GraphAlgorithms.Algorithms
       CurrentPath = state.Path;
       CurrentCost = state.Cost;
 
-      // pełna trasa
       if (state.Path.Count == n)
       {
         int totalCost = state.Cost + graph[state.City, start];
@@ -67,7 +66,6 @@ namespace GraphAlgorithms.Algorithms
         return true;
       }
 
-      // próbujemy dodać kolejne miasta
       for (int next = n - 1; next >= 0; next--)
       {
         if (!state.Visited[next] && graph[state.City, next] > 0)

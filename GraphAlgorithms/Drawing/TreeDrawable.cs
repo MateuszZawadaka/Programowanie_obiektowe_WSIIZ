@@ -35,7 +35,6 @@ namespace GraphAlgorithms.Drawing
         levelCount[lvl]++;
       }
 
-      // rysuj krawędzie
       canvas.StrokeColor = Colors.Black;
       canvas.StrokeSize = 2;
 
@@ -49,7 +48,6 @@ namespace GraphAlgorithms.Drawing
         }
       }
 
-      // rysuj wierzchołki
       foreach (var kv in positions)
       {
         int v = kv.Key;
