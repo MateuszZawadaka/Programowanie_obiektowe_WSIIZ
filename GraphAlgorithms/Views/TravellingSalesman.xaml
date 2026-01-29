@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GraphAlgorithms.Views.TravellingSalesman"
+             Title="Algorytm komiwojażera">
+
+	<VerticalStackLayout Padding="20" Spacing="15">
+
+		<!-- Przyciski konfiguracji -->
+		<Grid ColumnDefinitions="*, *" ColumnSpacing="10">
+			<Button Text="⚙️ Konfiguruj miasta" 
+                    Clicked="OnConfigureClicked"
+                    Grid.Column="0" BackgroundColor="#FF9800" TextColor="White"/>
+			<Button Text="🔄 Odśwież dane" 
+                    Clicked="OnRefreshClicked"
+                    Grid.Column="1" BackgroundColor="#009688" TextColor="White"/>
+		</Grid>
+
+		<!-- Informacja o miastach -->
+		<Label x:Name="CityCountLabel" Text="Liczba miast: 0"
+               FontSize="14" HorizontalOptions="Center" TextColor="Gray"/>
+
+		<!-- Sterowanie algorytmem -->
+		<Grid ColumnDefinitions="*, *" ColumnSpacing="10">
+			<Button Text="▶ Następny krok"
+                    Clicked="OnNextStepClicked"
+                    Grid.Column="0" BackgroundColor="#2196F3" TextColor="White"/>
+			<Button Text="⟲ Reset"
+                    Clicked="OnResetClicked"
+                    Grid.Column="1" BackgroundColor="#F44336" TextColor="White"/>
+		</Grid>
+
+		<!-- Aktualna trasa -->
+		<Frame Padding="15" BackgroundColor="#1E1E1E">
+			<VerticalStackLayout Spacing="5">
+				<Label Text="Aktualna trasa:" FontAttributes="Bold" FontSize="14"/>
+				<Label x:Name="CurrentPathLabel" FontSize="13"/>
+				<Label Text="Aktualny koszt:" FontAttributes="Bold" FontSize="14" Margin="0,10,0,0"/>
+				<Label x:Name="CurrentCostLabel" FontSize="13"/>
+			</VerticalStackLayout>
+		</Frame>
+
+		<!-- Najlepsza trasa -->
+		<Frame Padding="15" BackgroundColor="#1E1E1E">
+			<VerticalStackLayout Spacing="5">
+				<Label Text="Najlepsza znaleziona trasa:" FontAttributes="Bold" FontSize="14"/>
+				<Label x:Name="BestPathLabel" FontSize="13"/>
+				<Label Text="Najlepszy koszt:" FontAttributes="Bold" FontSize="14" Margin="0,10,0,0"/>
+				<Label x:Name="BestCostLabel" FontSize="13"/>
+			</VerticalStackLayout>
+		</Frame>
+
+		<!-- Informacja -->
+		<Label Text="Użyj przycisku 'Konfiguruj miasta' aby dodać własne miasta"
+               FontSize="12" TextColor="Gray" HorizontalOptions="Center" Margin="0,10,0,0"/>
+
+	</VerticalStackLayout>
+
+</ContentPage>

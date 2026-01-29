@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GraphAlgorithms.Views.TSPConfig"
+             Title="Konfiguracja TSP">
+
+	<ScrollView>
+		<StackLayout Padding="20" Spacing="15">
+
+			<!-- Nagłówek -->
+			<Label Text="KONFIGURACJA TSP" 
+                   FontSize="20" FontAttributes="Bold"
+                   HorizontalOptions="Center"/>
+			<StackLayout x:Name="Miasto" Spacing="5">
+				<Entry x:Name="CityName"
+							 Placeholder="Nazwa Miasta"
+							 />
+				<Entry x:Name="Position_x"
+						 Placeholder="Szerokość geograficzna"
+						 />
+				<Entry x:Name="Position_y"
+						 Placeholder="długość geograficzna"
+						 />
+			</StackLayout>
+			<!-- Lista miast -->
+			<Border Stroke="#CCCCCC" StrokeThickness="1" 
+                    StrokeShape="RoundRectangle 5" Padding="10">
+				
+				<StackLayout x:Name="stackCities" Spacing="5">
+					<!-- Dynamicznie dodawane miasta -->
+				</StackLayout>
+			</Border>
+
+			<!-- Przyciski CRUD -->
+			<Grid ColumnDefinitions="*, *" ColumnSpacing="10">
+				<Button Text="➕ Dodaj miasto" 
+                        Clicked="OnAddCityClicked"
+                        Grid.Column="0" BackgroundColor="#4CAF50" TextColor="White"/>
+				<Button Text="💾 Zapisz do pliku" 
+                        Clicked="OnSaveClicked"
+                        Grid.Column="1" BackgroundColor="#2196F3" TextColor="White"/>
+			</Grid>
+
+			<!-- Przyciski operacji -->
+			<Grid ColumnDefinitions="*, *" ColumnSpacing="10">
+				<Button Text="🗑️ Usuń konfigurację" 
+                        Clicked="OnDeleteClicked"
+                        Grid.Column="0" BackgroundColor="#F44336" TextColor="White"/>
+				<Button Text="🚀 Uruchom TSP" 
+                        Clicked="OnRunTspClicked"
+                        Grid.Column="1" BackgroundColor="#9C27B0" TextColor="White"/>
+				<Button Text="📁 Pokaż ścieżkę" 
+					Clicked="OnShowPathClicked"
+					BackgroundColor="Gray" TextColor="White"/>
+			</Grid>
+
+			<!-- Informacja -->
+			<Label Text="Dane zapisywane w pliku JSON"
+                   FontSize="12" TextColor="Gray" HorizontalOptions="Center"/>
+
+		</StackLayout>
+	</ScrollView>
+</ContentPage>

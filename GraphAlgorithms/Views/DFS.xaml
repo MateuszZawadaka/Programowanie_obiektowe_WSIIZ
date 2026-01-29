@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GraphAlgorithms.Views.DFS"
+             Title="DFS – krok po kroku">
+
+	<ScrollView>
+		<VerticalStackLayout Padding="16" Spacing="12">
+
+			<!-- OPIS TEORETYCZNY -->
+			<Label
+                Text="Algorytm przechodzenia w głąb (ang. depth-first search, DFS) polega na eksplorowaniu grafu poprzez możliwie najgłębsze zagłębianie się w strukturę grafu, zaczynając od wierzchołka startowego."
+                FontAttributes="Bold" />
+
+			<Label
+                Text="Algorytm rozpoczyna działanie od wybranego wierzchołka, a następnie przechodzi do jednego z jego sąsiadów. Proces ten jest kontynuowany tak długo, jak długo istnieją nieodwiedzeni sąsiedzi aktualnego wierzchołka. Gdy dalsze przejście nie jest możliwe, algorytm cofa się do poprzedniego wierzchołka i kontynuuje przeszukiwanie." />
+
+			<Label
+                Text="Podobnie jak w algorytmie BFS, w celu uniknięcia zapętlenia w przypadku grafów zawierających cykle, stosowany jest dodatkowy parametr vs, który określa stan odwiedzin wierzchołka. Wartość false oznacza wierzchołek nieodwiedzony, natomiast wartość true — wierzchołek już odwiedzony." />
+
+			<Label
+                Text="Parametry te są przechowywane w tablicy logicznej vs, której rozmiar odpowiada liczbie wierzchołków w grafie. Element vs[i] odnosi się do wierzchołka grafu o numerze i." />
+
+			<!-- TYTUŁ -->
+			<Label
+                Text="Depth First Search (DFS)"
+                FontSize="22"
+                FontAttributes="Bold"
+                HorizontalOptions="Center" />
+
+			<!-- WIDOK RYSOWANIA -->
+			<GraphicsView
+                x:Name="TreeView"
+                HeightRequest="300"
+                BackgroundColor="White" />
+
+			<!-- WYNIK -->
+			<Label
+                Text="Odwiedzone wierzchołki:"
+                FontAttributes="Bold" />
+
+			<Label
+                x:Name="OutputLabel"
+                FontSize="16"
+                TextColor="White" />
+
+			<!-- PRZYCISKI -->
+			<HorizontalStackLayout Spacing="12"
+                                   HorizontalOptions="Center">
+
+				<Button
+                    Text="Reset"
+                    Clicked="OnResetClicked" />
+
+				<Button
+                    Text="Next step"
+                    Clicked="OnNextStepClicked" />
+
+			</HorizontalStackLayout>
+
+		</VerticalStackLayout>
+	</ScrollView>
+
+</ContentPage>

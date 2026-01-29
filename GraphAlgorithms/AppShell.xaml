@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="GraphAlgorithms.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:GraphAlgorithms"
+	  xmlns:views="clr-namespace:GraphAlgorithms.Views"
+    Shell.FlyoutBehavior="Flyout"
+    Title="GraphAlgorithms">
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+	<ShellContent
+		Title="Algorytm BFS"
+		ContentTemplate="{DataTemplate views:BFS}"/>
+	<ShellContent
+		Title="Algorytm DFS"
+		ContentTemplate="{DataTemplate views:DFS}"/>
+	<ShellContent
+		Title="Problem Komiwojażera"
+		ContentTemplate="{DataTemplate views:TravellingSalesman}" />
+	<ShellContent		
+		Title="Konfiguracja TSP"
+		ContentTemplate="{DataTemplate views:TSPConfig}" />
+
+</Shell>
