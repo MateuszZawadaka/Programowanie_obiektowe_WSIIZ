@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="ABMCalibrationApp.ControlPage"
+    Title="Sterowanie">
+
+	<ScrollView>
+		<VerticalStackLayout Padding="20" Spacing="15">
+
+			<Label Text="SCA"
+                   FontSize="20"
+                   HorizontalOptions="Center"/>
+
+			<HorizontalStackLayout Spacing="10">
+				<Button Text="SCA_0" Clicked="OnCommandClicked"/>
+				<Button Text="SCA_1" Clicked="OnCommandClicked"/>
+				<Button Text="SCA_2" Clicked="OnCommandClicked"/>
+				<Button Text="SCA_3" Clicked="OnCommandClicked"/>
+				<Button Text="SCA_4" Clicked="OnCommandClicked"/>
+			</HorizontalStackLayout>
+
+			<Label Text="SA"
+                   FontSize="20"
+                   HorizontalOptions="Center"/>
+
+			<HorizontalStackLayout Spacing="10">
+				<Button Text="SA_0" Clicked="OnCommandClicked"/>
+				<Button Text="SA_1" Clicked="OnCommandClicked"/>
+				<Button Text="SA_2" Clicked="OnCommandClicked"/>
+				<Button Text="SA_3" Clicked="OnCommandClicked"/>
+				<Button Text="SA_4" Clicked="OnCommandClicked"/>
+			</HorizontalStackLayout>
+
+		</VerticalStackLayout>
+	</ScrollView>
+
+</ContentPage>
