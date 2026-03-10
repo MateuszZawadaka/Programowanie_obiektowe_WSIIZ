@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ESP32 WebSocket Test</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        #log { background: #f0f0f0; padding: 10px; height: 300px; overflow: auto; font-family: monospace; }
+        button { margin: 5px; padding: 8px 15px; }
+        input { padding: 8px; margin: 5px; width: 200px; }
+    </style>
+</head>
+<body>
+    <h2>ESP32 WebSocket Test (AP Mode)</h2>
+    
+    <div>
+        <p>Status: <span id="status" style="color: red;">Rozłączony</span></p>
+        <p>IP ESP32: <span id="espIP">192.168.4.1</span></p>
+    </div>
+    
+    <div>
+        <input type="text" id="messageInput" placeholder="Wiadomość" value="Hello ESP32!">
+        <input type="text" id="typeInput" placeholder="Typ" value="test">
+        <button onclick="sendMessage()">Wyślij</button>
+        <button onclick="getStatus()">Status ESP</button>
+        <button onclick="ping()">Ping</button>
+        <button onclick="disconnect()">Rozłącz</button>
+        <button onclick="connect()">Połącz</button>
+    </div>
+    
+    <div>
+        <h3>Log:</h3>
+        <div id="log"></div>
+    </div>
+
+    <script>
+        let ws = null;
+        const logDiv = document.getElementById('log');
+        const statusSpan = document.getElementById('status');
+        
+        function connect() {
+            const espIP = '192.168.4.1';
+            
+            if (ws) {
+                ws.close();
+            }
+            
+            ws = new WebSocket(`ws://${espIP}:81`);
+            
+            ws.onopen = function() {
+                log('✅ Połączono z ESP32');
+                statusSpan.innerText = 'Połączony';
+                statusSpan.style.color = 'green';
+            };
+            
+            ws.onclose = function() {
+                log('❌ Rozłączono');
+                statusSpan.innerText = 'Rozłączony';
+                statusSpan.style.color = 'red';
+            };
+            
+            ws.onmessage = function(event) {
+                try {
+                    const data = JSON.parse(event.data);
+                    log('📥 Otrzymano: ' + JSON.stringify(data, null, 2));
+                    
+                    if (data.type === 'status') {
+                        log(`   📊 Uptime: ${data.uptime}ms, Klienci: ${data.clients}, RAM: ${data.free_heap}`);
+                    }
+                } catch(e) {
+                    log('📥 Otrzymano (surowy): ' + event.data);
+                }
+            };
+            
+            ws.onerror = function(error) {
+                log('⚠️ Błąd połączenia');
+                statusSpan.innerText = 'Błąd';
+                statusSpan.style.color = 'orange';
+            };
+        }
+        
+        function disconnect() {
+            if (ws) {
+                ws.close();
+            }
+        }
+        
+        function sendMessage() {
+            if (!ws || ws.readyState !== WebSocket.OPEN) {
+                log('⚠️ Brak połączenia');
+                return;
+            }
+            
+            const msg = document.getElementById('messageInput').value;
+            const type = document.getElementById('typeInput').value;
+            
+            const data = {
+                type: type,
+                message: msg,
+                timestamp: Date.now()
+            };
+            
+            ws.send(JSON.stringify(data));
+            log('📤 Wysłano: ' + JSON.stringify(data));
+        }
+        
+        function ping() {
+            if (!ws || ws.readyState !== WebSocket.OPEN) {
+                log('⚠️ Brak połączenia');
+                return;
+            }
+            
+            ws.send(JSON.stringify({type: "ping"}));
+            log('📤 Ping');
+        }
+        
+        function getStatus() {
+            if (!ws || ws.readyState !== WebSocket.OPEN) {
+                log('⚠️ Brak połączenia');
+                return;
+            }
+            
+            ws.send(JSON.stringify({type: "get_status"}));
+            log('📤 Żądanie statusu');
+        }
+        
+        function log(text) {
+            const time = new Date().toLocaleTimeString();
+            logDiv.innerHTML += `[${time}] ${text}\n`;
+            logDiv.scrollTop = logDiv.scrollHeight;
+        }
+        
+        // Auto connect po załadowaniu strony
+        window.onload = function() {
+            setTimeout(connect, 500);
+        };
+    </script>
+</body>
+</html>

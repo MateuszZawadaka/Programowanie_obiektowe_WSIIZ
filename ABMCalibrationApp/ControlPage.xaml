@@ -13,6 +13,9 @@
                    HorizontalOptions="Center"/>
 
 			<HorizontalStackLayout Spacing="10">
+				
+				<Button Text="START" Clicked="OnCommandClicked"/>
+				<Button Text="STOP" Clicked="OnCommandClicked"/>
 				<Button Text="SCA_0" Clicked="OnCommandClicked"/>
 				<Button Text="SCA_1" Clicked="OnCommandClicked"/>
 				<Button Text="SCA_2" Clicked="OnCommandClicked"/>

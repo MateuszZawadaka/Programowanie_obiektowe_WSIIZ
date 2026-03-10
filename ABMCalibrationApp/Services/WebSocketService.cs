@@ -8,7 +8,7 @@ public class WebSocketService
   private ClientWebSocket? _webSocket;
   private CancellationTokenSource? _cts;
 
-  private const string ServerUrl = "ws://10.42.0.1:8765";
+  private const string ServerUrl = "ws://192.168.4.1:81";
 
   public bool IsConnected =>
       _webSocket != null &&
